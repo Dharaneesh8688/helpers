@@ -14,8 +14,20 @@
     input{
     border-radius:50px;
   }
- 
-   
+
+  .forma{
+      border: 3px solid black;
+      position:absolute; 
+      margin-top:20px;
+      padding-left:17px;
+      padding-right:17px;
+      padding-top:20px;
+      padding-bottom:10px;
+      border-radius:15px;
+      box-shadow:16px 13px 15px black;
+      background-color:white;
+      color:black
+    }
    </style>
 </head>
 <body>
@@ -48,8 +60,9 @@
 </nav>
 <div class="container">
   <div class="row">
-    <div class="col-md-6 mx-auto justify-content-center">
-    <form method="post" action="delet.php" style="margin-top: 350px;text-align:justify;" >
+    <div class="col-md-12 pt-3 d-flex align-item-center  justify-content-center ">
+    <div class="forma">
+    <form method="post" action="delet.php" >
   <label for="NAME">NAME:</label>
   <input type="text" id="NAME" name="NAME" REQUIRED><br><br>
   <label for="DOB">DOB:</label>
@@ -89,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <input style="margin-left:60px;" type="submit" value="REMOVE">
 </form>
     </div>
+</div>
   </div>
 </div>
 
