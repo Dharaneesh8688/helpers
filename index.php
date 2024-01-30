@@ -19,6 +19,27 @@
     padding:2px;
   
   }
+  #button:hover{
+background-color:green;
+color:white;
+
+box-shadow:10px 13px 9px black;
+
+  }
+  .forma{
+    background-color:white;
+    color:black;
+    margin-top:60px;
+    padding:4px 8px 8px 8px ;
+    border-radius:8px;
+    box-shadow:14px 6px 8px black;
+    
+  }
+  input{
+    border-radius:50px;
+  }
+ 
+ 
 </style>
 </head>
 
@@ -32,23 +53,18 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2  mb-lg-0 " style="margin-left:70%";>
+      <ul class="navbar-nav me-auto mb-2  mb-lg-0 " >
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="form.php">Register</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            More
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="delet.php">Delet doner</a></li>
-            <li><a class="dropdown-item" href="#">about</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">search</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="delet.php">Delete Doner</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"> About</a>
         </li>
        
       </ul>
@@ -58,14 +74,25 @@
 </nav>
 <div class="container">
   <div class="row ">
-    <div class="col-md-6 justify-content-center ">
-    <form method="post" action="index.php" style="margin-top: 100px;text-align:justify;">
+    <div class="col-md-4">
+      
+    </div>
+    <div class="col-md-4 justify-content-center ">
+      <div class="forma">
+
+     
+    <form method="post" action="index.php" style="text-align:justify;">
+    <h3 style="text-align:center;padding-top:2px;">SEARCH</h3>
   <label for="city">City:</label>
   <input type="text" id="city" name="city" style="text-transform: uppercase;"><br><br>
+  <label for="district">DISTRICT:</label>
+  <input type="text" id="district" name="district" style="text-transform: uppercase;"><br><br>
+  
   <label for="blood">Blood:</label>
   <input type="text" id="blood" name="blood" style="text-transform: uppercase;"><br><br>
-  <input type="submit" value="Search">
+  <input id="button" style="border-radius:9px;"  type="submit" value="Search">
 </form>
+</div>
   </div>
 <div class="col-md-6 text-center mt-5 ">
 <?php
@@ -74,18 +101,18 @@ include 'connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 $city = $_POST["city"];
 $blood = $_POST["blood"];
+$dis = $_POST["district"];
 
 
-// SQL query
-$sql = "SELECT * FROM reg_form WHERE CITY = '$city' AND BLOOD = '$blood'";
+
+$sql = "SELECT * FROM reg_form WHERE  DISTRICT = '$dis' AND CITY = '$city' AND  BLOOD = '$blood' ";
 $result = mysqli_query($conn, $sql);
 if (!$result) {
   die("Query failed: " . mysqli_error($conn));
 }
 ?>
 <?php
-// Data display
-if (mysqli_num_rows($result) > 0) {?>
+if (mysqli_num_rows($result) > 0) { ?>
   <table class="mx-3">
   <tr><th>NAME</th><th>AVAILABLE</th><th>BLOOD</th><th>MOBILE</th></tr>
   <?php while($row = mysqli_fetch_assoc($result)) {
@@ -96,12 +123,10 @@ if (mysqli_num_rows($result) > 0) {?>
     <td><?php echo $row["BLOOD"]; ?></td>
     <td><?php echo $row["mobile_no"]; ?></td>
     </tr>
-    
     <?php
   }?>
   </table>
   <?php
-
 } else {
   echo "No results found";
 }
@@ -109,10 +134,7 @@ if (mysqli_num_rows($result) > 0) {?>
 </div>
 </div>
 </div>
-
-
 <?php
-// Database connection close
 mysqli_close($conn);
 }
 ?>
