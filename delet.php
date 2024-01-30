@@ -11,6 +11,11 @@
       background-color:gray;
       color:white;
     }
+    input{
+    border-radius:50px;
+  }
+ 
+   
    </style>
 </head>
 <body>
@@ -21,22 +26,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " style="margin-left:80%";>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="form.php">Register</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            More
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Delet Doner</a></li>
-            <li><a class="dropdown-item" href="#">About</a></li>
-       </ul>
+        <li class="nav-item pl-4">
+          <a class="nav-link" href="delet.php">Delete Doner</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"> About</a>
+        </li>
+     
 
       </ul>
      
@@ -58,22 +61,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   include 'connection.php';
 
-  // SQL query to check if the user exists
+  
   $check_query = "SELECT * FROM reg_form WHERE NAME ='$NAME' AND DOB = '$DOB'";
   $result = $conn->query($check_query);
 
+?>
+<span>
+<?php
   if ($result->num_rows > 0) {
-      // User exists, proceed with deletion
+      
       $delete_query = "DELETE FROM reg_form WHERE NAME ='$NAME' AND DOB = '$DOB'";
       if ($conn->query($delete_query) === TRUE) {
-          echo "<p style='color: red;'>Donor removed successfully</p>";
+          echo "Donor removed successfully";
       } else {
           echo "Error deleting record: " . $conn->error;
       }
-  } else {
-      echo "User not found in the database";
   }
-
+  else{
+      echo "User not found ";
+  }
+  ?>
+  </span>
+  <?php
   mysqli_close($conn);
 }
 ?><br>
