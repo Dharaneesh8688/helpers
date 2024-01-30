@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO reg_form (`NAME`,`DOB`,`BLOOD`,`DISTRICT`,`CITY`,`AVAILABLE`,`mobile_no`) VALUES ('".$NAME."', '".$dob."', '".$blood."','".$dist."','".$city."','".$aval."','".$mobile."')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "registation sucessfull";
+        echo "Registation sucessfull";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
