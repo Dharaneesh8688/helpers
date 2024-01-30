@@ -11,6 +11,23 @@
       background-color:gray;
       color:white;
     }
+    .forma{
+      border: 3px solid black;
+      position:absolute; 
+      padding-left:17px;
+      padding-right:17px;
+      padding-top:0px;
+      padding-bottom:10px;
+      border-radius:15px;
+      box-shadow:16px 13px 15px black;
+      background-color:white;
+      color:black
+    }
+    input{
+    border-radius:50px;
+    padding-left:10px;
+  }
+ 
 
     </style>
 
@@ -23,22 +40,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " style="margin-left:80%";>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Register</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            More
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="delet.php">Delet doner</a></li>
-            <li><a class="dropdown-item" href="#">About</a></li>
-     </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="delet.php">Delete Doner</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"> About</a>
+        </li>
+       
        
       </ul>
      
@@ -47,42 +62,41 @@
 </nav>
     <div class="container">
         <div class="row justify-content-center ">
-            <div class="col-md-6 mt-5" >
-        <form action="form.php" method="post" enctype="multipart/form-data" style="margin-top: 100px;text-align:justify;">
-            <label for="name">NAME</label>
+          <div class="col-md-4">
+
+          </div>
+            <div class="col-md-4 mt-5" >
+              <div class="forma">
+            <form action="form.php" method="post" enctype="multipart/form-data" style="margin-top: 100px;text-align:justify;">
+            <H4 style="text-align:center;">REGISTATION FORM</H4>
+            <label for="name">NAME:</label>
             <input type="text" id="name" name="NAME" required style="text-transform: uppercase;"></input><br><br>
-            <label for="dob">DOB</label>
+            <label for="dob">DOB:</label>
             <input type="date" id="dob" name="DOB" required ><br><br>
-            <label for="blood">Blood group</label>
+            <label for="blood">Blood group:</label>
             <input type="text" id="blood" name="blood" required style="text-transform: uppercase;"><br><br>
           
-            <label for="district">District</label>
+            <label for="district">District:</label>
             <input type="text" id="district" name="district" required style="text-transform: uppercase;"><br><br>
           
-            <label for="city">city</label>
+            <label for="city">city:</label>
             <input type="text" id="city" name="city" required style="text-transform: uppercase;"><br><br>
           
-            <label for="mob">Mobile</label>
+            <label for="mob">Mobile:</label>
             <input type="number" id="mob" name="mob" required><br><br>
           
-            <label for="aval">Available</label>
+            <label for="aval">Available:</label>
 <select name="available" id="aval" style="text-transform: uppercase;">
   <option value="Anytime">ANY TIME</option>
   <option value="Certaintime">Alternate</option>
 
 </select><br><br>
-<span>
-<?php
-include 'database.php';
-?><br><br>
-</span>
-
-          
-           <button type="submit">submit</button>
-        </form>
-        
-    
-
+<span><?php include 'database.php'; ?><br><br> </span>
+ <button type="submit">submit</button>
+</form>
+  </div>
+    </div>
+    <div class="col-md-4">
 
     </div>
             </div>
